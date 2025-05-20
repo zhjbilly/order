@@ -1,0 +1,62 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8083
+  servlet:
+    # 应用的访问路径
+    context-path: /
+    multipart:
+      # 单个文件大小
+      max-file-size: 2GB
+      # 设置总上传的文件大小
+      max-request-size: 2GB
+    application-display-name:
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+
+# 日志配置
+logging:
+  level:
+    org.springframework: warn
+  file:
+    path: /opt/logs/orderService/
+  config: classpath:logback-spring.xml
+
+# Spring配置
+spring:
+  application:
+    name: user
+  datasource:
+    # 数据源基本配置
+    username: root
+    password: 111111
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/warehouse?characterEncoding=utf-8
+    type: com.alibaba.druid.pool.DruidDataSource
+  dubbo:
+    application:
+      name: warehouse
+    registry:
+      protocol: zookeeper
+      address: 127.0.0.1:2181
+      monitor:
+        protocol: register
+    protocol:
+      port: "20882"
+    consumer:
+      timeout: "60000"
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml    # mapper映射文件位置
+  type-aliases-package: com.qizhi.warehouse.domain    # 实体类所在的位置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   #用于控制台打印sql语句
+
