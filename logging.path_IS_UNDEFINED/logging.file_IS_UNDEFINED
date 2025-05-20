@@ -1,0 +1,11 @@
+20250520104421 | place_holder | 0.0 | 10:44:21.466 [main] INFO  com.alibaba.dubbo.common.logger.LoggerFactory - using logger: com.alibaba.dubbo.common.logger.slf4j.Slf4jLoggerAdapter
+20250520104421 | place_holder | 0.0 | 10:44:21.539 [main] INFO  com.qizhi.order.OrderApplication - Starting OrderApplication on zhjdeMacBook-Pro.local with PID 60504 (/Users/zhj/Desktop/warehouse/order/target/classes started by zhj in /Users/zhj/Desktop/warehouse/order)
+20250520104421 | place_holder | 0.0 | 10:44:21.540 [main] INFO  com.qizhi.order.OrderApplication - No active profile set, falling back to default profiles: default
+20250520104422 | place_holder | 0.0 | 10:44:22.227 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.qizhi.order]' package. Please check your configuration.
+20250520104423 | place_holder | 0.0 | 10:44:23.135 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+20250520104423 | place_holder | 0.0 | 10:44:23.135 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+20250520104423 | place_holder | 0.0 | 10:44:23.229 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20250520104423 | place_holder | 0.0 | 10:44:23.438 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+20250520104423 | place_holder | 0.0 | 10:44:23.577 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+20250520104424 | place_holder | 0.0 | 10:44:24.661 [main] INFO  com.qizhi.order.OrderApplication - Started OrderApplication in 3.608 seconds (JVM running for 4.11)
+20250520104424 | place_holder | 0.0 | 10:44:24.732 [RMI TCP Connection(2)-192.168.50.140] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <springProperty name="logging.path" source="logging.path"/>
+    <springProperty name="logging.file" source="logging.file"/>
+
+    <!--<springProperty name="logging.endpoint" source="logging.endpoint"/>-->
+    <!--<springProperty name="access_key_id" source="access_key_id"/>-->
+    <!--<springProperty name="access_key_secret" source="access_key_secret"/>-->
+
+
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!-- 控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyyMMddHHmmss} | %X{dataName:-place_holder} | %X{dataValue:-0.0} | %d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 日志格式 -->
+        <encoder>
+            <pattern>%d{yyyyMMddHHmmss} | %X{dataName:-place_holder} | %X{dataValue:-0.0} | %d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <!--日志文件输出的文件名 -->
+        <file>${logging.path}/${logging.file}</file>
+
+        <!-- 固定数量的日志文件，防止将磁盘占满 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${logging.path}/${logging.file}.%i</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+
+        <!--日志文件最大的大小 -->
+        <triggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>500MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!--<shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+    <appender name="ALIYUN" class="com.aliyun.openservices.log.logback.LoghubAppender">
+
+        &lt;!&ndash; Required parameters &ndash;&gt;
+        &lt;!&ndash; Configure account and network  &ndash;&gt;
+        <endpoint>${logging.endpoint}</endpoint>
+        <accessKeyId>${access_key_id}</accessKeyId>
+        <accessKey>${access_key_secret}</accessKey>
+
+        &lt;!&ndash; Configure sls &ndash;&gt;
+        <projectName>acard-test</projectName>
+        <logstore>acard-test</logstore>
+        &lt;!&ndash; Required parameters(end) &ndash;&gt;
+
+        &lt;!&ndash;  Optional parameters &ndash;&gt;
+        <timeFormat>yyyy-MM-dd'T'HH:mmZ</timeFormat>
+        &lt;!&ndash;&lt;!&ndash;  Optional parameters &ndash;&gt;&ndash;&gt;
+        <timeZone>Asia/Shanghai</timeZone>
+    </appender>
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>-->
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!--<appender-ref ref="ALIYUN"/>-->
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
